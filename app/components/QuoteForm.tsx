@@ -25,18 +25,18 @@ export default function QuoteForm({
     firstName: "John",
     lastName: "Doe",
     email: "john@example.com",
-    phone: "",
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
+    phone: "225-201-3112",
+    address: "Street 1",
+    city: "New York",
+    state: "NY",
+    zipCode: "10001",
     vin: "KNDJF723977442330",
     odometer: "25000",
     carStatus: "Used",
     dealType: "Loan",
     contractDate: "2024-03-31",
     purchasePrice: "25000",
-    financeTerm: "60",
+    financeTerm: "60", // Default test value remains valid for the drop-down select
     amountFinanced: "20000",
     downPayment: "5000",
     year: "2020",
@@ -233,14 +233,22 @@ export default function QuoteForm({
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
               />
             </div>
+            
+            {/* Swapped input element out for select tag down below */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Finance Term (months)</label>
-              <input
-                type="number"
-                {...register('financeTerm')}
-                placeholder="60"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-              />
+              <label className="block text-sm font-medium text-gray-700">Finance Term</label>
+              <select
+                {...register('financeTerm', { required: 'Finance term is required' })}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-gray-900"
+              >
+                <option value="12">12 Months</option>
+                <option value="24">24 Months</option>
+                <option value="36">36 Months</option>
+                <option value="48">48 Months</option>
+                <option value="60">60 Months</option>
+                <option value="72">72 Months</option>
+                <option value="84">84 Months</option>
+              </select>
             </div>
           </div>
 
